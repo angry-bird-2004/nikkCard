@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Calendar, Clock, MapPin, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Heart, Calendar, Clock, MapPin, Sparkles } from 'lucide-react';
 
-export default function InvitationCard({ timeLeft, rsvpSubmitted, formData, setFormData, handleRsvpSubmit }) {
+export default function InvitationCard({ timeLeft }) {
   return (
     <motion.div
       key="card"
@@ -123,10 +123,10 @@ export default function InvitationCard({ timeLeft, rsvpSubmitted, formData, setF
       </div>
 
       {/* Live Countdown Timer Cards */}
-      <div className="mb-8 print:hidden">
+      <div className="mb-4">
         <p className="text-xs uppercase tracking-[0.25em] text-amber-400 font-bold mb-3">Counting down to forever</p>
         <div className="grid grid-cols-4 gap-2.5 max-w-sm mx-auto">
-          {['days', 'hours', 'minutes', 'seconds'].map((unit, idx) => (
+          {['days', 'hours', 'minutes', 'seconds'].map((unit) => (
             <motion.div 
               key={unit}
               whileHover={{ y: -4, boxShadow: "0 10px 25px rgba(245,158,11,0.2)" }}
@@ -139,66 +139,7 @@ export default function InvitationCard({ timeLeft, rsvpSubmitted, formData, setF
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Quick RSVP Form Widget */}
-      <div className="border-t border-amber-500/25 pt-6 mt-6 print:hidden text-left bg-black/40 p-6 rounded-3xl border shadow-xl backdrop-blur-md">
-        <h3 className="text-base font-bold text-amber-200 mb-1 flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-amber-400" /> Grace us with your presence
-        </h3>
-        <p className="text-xs text-amber-100/60 mb-4 font-sans">Kindly confirm your attendance by filling out the form below.</p>
-
-        {rsvpSubmitted ? (
-          <motion.div 
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 p-4 rounded-2xl flex items-center gap-3 shadow-lg"
-          >
-            <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0 animate-bounce" />
-            <p className="text-sm font-medium">Jazakallah Khair, {formData.name}! Your RSVP has been saved successfully.</p>
-          </motion.div>
-        ) : (
-          <form onSubmit={handleRsvpSubmit} className="space-y-3.5">
-            <div>
-              <input 
-                type="text" 
-                required
-                placeholder="Your Full Name (e.g. Muhammad Ali)"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                className="w-full px-4 py-3 bg-black/60 border border-amber-500/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-100 text-sm placeholder:text-amber-100/30 transition shadow-inner font-sans"
-              />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <select 
-                value={formData.guests}
-                onChange={(e) => setFormData({...formData, guests: e.target.value})}
-                className="w-full px-4 py-3 bg-[#241A13] border border-amber-500/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-100 text-sm font-sans shadow-inner cursor-pointer"
-              >
-                <option value="1">1 Guest Attending</option>
-                <option value="2">2 Guests Attending</option>
-                <option value="3">3 Guests Attending</option>
-                <option value="4">4 Guests Attending</option>
-              </select>
-              <input 
-                type="text" 
-                placeholder="Leave a heartfelt prayer (Optional)"
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                className="w-full px-4 py-3 bg-black/60 border border-amber-500/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-100 text-sm placeholder:text-amber-100/30 transition shadow-inner font-sans"
-              />
-            </div>
-            <motion.button 
-              whileHover={{ scale: 1.02, boxShadow: "0 0 25px rgba(245, 158, 11, 0.5)" }}
-              whileTap={{ scale: 0.98 }}
-              type="submit" 
-              className="w-full bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 hover:from-amber-600 hover:to-amber-500 text-white font-bold py-3.5 rounded-2xl shadow-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs tracking-[0.2em] uppercase mt-2 border border-amber-400/50"
-            >
-              <Send className="w-4 h-4" /> Confirm Attendance
-            </motion.button>
-          </form>
-        )}
-      </div>
+      </div>    
     </motion.div>
   );
 }

@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Map, MessageSquareHeart, Phone } from 'lucide-react';
+import { Sparkles, Map, Phone } from 'lucide-react';
 
 import Envelope from './components/Envelope';
 import InvitationCard from './components/InvitationCard';
 import VenueModal from './components/VenueModal';
-import WishesWall from './components/WishesWall';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
   const [activeTab, setActiveTab] = useState('card'); 
-  const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: '', guests: '1', message: '' });
-  const [wishesList, setWishesList] = useState([
-    { name: 'Aunt Zainab', message: 'May Allah bless your marriage and shower His endless blessings upon you both!' },
-    { name: 'Usman & Family', message: 'Mabrouk! Wishing you a lifetime of joy, love, and sweet companionship.' }
-  ]);
   const audioRef = useRef(null);
 
   // Countdown Target Date (Oct 19, 2026)
@@ -50,20 +43,10 @@ export default function App() {
     }, 700);
   };
 
-  const handleRsvpSubmit = (e) => {
-    e.preventDefault();
-    if (formData.name) {
-      setRsvpSubmitted(true);
-      if (formData.message) {
-        setWishesList([{ name: formData.name, message: formData.message }, ...wishesList]);
-      }
-    }
-  };
-
   return (
     <div className="min-h-[100dvh] w-full max-w-[100vw] bg-gradient-to-br from-[#060911] via-[#16100D] to-[#24130A] text-[#EDE8DF] flex flex-col items-center justify-between lg:justify-center p-3 sm:p-6 md:p-10 font-serif relative overflow-x-hidden selection:bg-amber-600 selection:text-white perspective-2000 box-border">
       
-      {/* Background Audio (Auto-plays on open without visible controls) */}
+      {/* Background Audio */}
       <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
 
       {/* Responsive Glowing Golden Background Particle Field */}
@@ -112,12 +95,11 @@ export default function App() {
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex flex-wrap justify-center gap-1.5 sm:gap-2 bg-[#1B1613]/95 backdrop-blur-2xl p-1.5 rounded-2xl lg:rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-amber-500/40 mb-4 sm:mb-6 z-20 w-full max-w-xs sm:max-w-md lg:max-w-none lg:w-auto"
+              className="flex justify-center gap-1.5 sm:gap-2 bg-[#1B1613]/95 backdrop-blur-2xl p-1.5 rounded-2xl lg:rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-amber-500/40 mb-4 sm:mb-6 z-20 w-full max-w-[260px] sm:max-w-xs lg:w-auto"
             >
               {[
                 { id: 'card', label: 'Invitation', icon: Sparkles },
-                { id: 'venue', label: 'Venue & Map', icon: Map },
-                { id: 'wishes', label: 'Guest Wishes', icon: MessageSquareHeart }
+                { id: 'venue', label: 'Venue & Map', icon: Map }
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -127,7 +109,7 @@ export default function App() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 min-w-[95px] sm:min-w-[110px] lg:flex-initial px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl lg:rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${isActive ? 'bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-white shadow-lg border border-amber-400/50' : 'text-amber-200/70 hover:text-white hover:bg-amber-900/40'}`}
+                    className={`flex-1 min-w-[110px] sm:min-w-[130px] lg:flex-initial px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl lg:rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${isActive ? 'bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-white shadow-lg border border-amber-400/50' : 'text-amber-200/70 hover:text-white hover:bg-amber-900/40'}`}
                   >
                     <Icon className="w-3.5 h-3.5 shrink-0" /> <span className="truncate">{tab.label}</span>
                   </motion.button>
@@ -150,21 +132,11 @@ export default function App() {
 
               <AnimatePresence mode="wait">
                 {activeTab === 'card' && (
-                  <InvitationCard 
-                    timeLeft={timeLeft}
-                    rsvpSubmitted={rsvpSubmitted}
-                    formData={formData}
-                    setFormData={setFormData}
-                    handleRsvpSubmit={handleRsvpSubmit}
-                  />
+                  <InvitationCard timeLeft={timeLeft} />
                 )}
 
                 {activeTab === 'venue' && (
                   <VenueModal />
-                )}
-
-                {activeTab === 'wishes' && (
-                  <WishesWall wishesList={wishesList} />
                 )}
               </AnimatePresence>
 
