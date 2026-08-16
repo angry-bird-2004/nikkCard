@@ -48,7 +48,7 @@ export default function InvitationCard({ timeLeft }) {
           transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
           className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100 bg-clip-text text-transparent drop-shadow-[0_5px_15px_rgba(0,0,0,0.6)] font-serif"
         >
-          Fatima Zahra
+          Wajiha Khalid
         </motion.h2>
 
         <div className="flex items-center justify-center gap-3 text-amber-500">
@@ -67,7 +67,7 @@ export default function InvitationCard({ timeLeft }) {
           transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.5 }}
           className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100 bg-clip-text text-transparent drop-shadow-[0_5px_15px_rgba(0,0,0,0.6)] font-serif"
         >
-          Abdullah Khan
+          Ubaidullah Ibrahim
         </motion.h2>
       </motion.div>
 
@@ -88,8 +88,8 @@ export default function InvitationCard({ timeLeft }) {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-wider text-amber-400 font-bold">Date</p>
-            <p className="text-sm text-amber-100 font-medium">Saturday, October 19th, 2026</p>
-            <p className="text-[11px] text-amber-300/70">Rabi-ul-Awwal 15, 1446</p>
+            <p className="text-sm text-amber-100 font-medium">Sunday, August 23rd, 2026</p>
+            <p className="text-[11px] text-amber-300/70">Safar 19, 1448</p>
           </div>
         </motion.div>
 
@@ -102,7 +102,7 @@ export default function InvitationCard({ timeLeft }) {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-wider text-amber-400 font-bold">Time</p>
-            <p className="text-sm text-amber-100 font-medium">3:00 PM Sharp</p>
+            <p className="text-sm text-amber-100 font-medium">2:00 PM Sharp</p>
             <p className="text-[11px] text-amber-300/70">Reception follows dinner</p>
           </div>
         </motion.div>
@@ -116,8 +116,8 @@ export default function InvitationCard({ timeLeft }) {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-wider text-amber-400 font-bold">Venue Location</p>
-            <p className="text-sm text-amber-100 font-medium">The Grand Crystal Hall</p>
-            <p className="text-xs text-amber-300/70">145, Al-Falah Avenue, Lahore, Pakistan</p>
+            <p className="text-sm text-amber-100 font-medium">Haji Khalid Mehmood House</p>
+            <p className="text-xs text-amber-300/70">Kanchi, Lahore, Pakistan</p>
           </div>
         </motion.div>
       </div>

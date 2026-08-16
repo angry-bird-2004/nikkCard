@@ -12,8 +12,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('card'); 
   const audioRef = useRef(null);
 
-  // Countdown Target Date (Oct 19, 2026)
-  const targetDate = new Date('2026-10-19T15:00:00').getTime();
+  // Countdown Target Date (Aug 23, 2026, 14:00)
+  const targetDate = new Date('2026-08-23T14:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -144,8 +144,8 @@ export default function App() {
               <div className="border-t border-amber-500/25 pt-4 sm:pt-6 mt-6 sm:mt-8 text-xs text-amber-100/60 space-y-2 font-sans">
                 <p className="font-semibold text-amber-200 font-serif">For Inquiries & Assistance:</p>
                 <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4">
-                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" /> Ayesha: (0300-1234567)</span>
-                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" /> Bilal: (0321-9876543)</span>
+                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" /> Saif: (0309-4840711)</span>
+                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" /> Ubaidullah: (0307-4712588)</span>
                 </div>
                 <p className="italic pt-2 text-amber-300/80 font-serif text-xs sm:text-sm px-2">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them..." (Quran 30:21)</p>
               </div>
