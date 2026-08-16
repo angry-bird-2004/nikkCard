@@ -77,28 +77,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#060911] via-[#16100D] to-[#24130A] text-[#EDE8DF] flex flex-col items-center justify-center p-4 sm:p-8 font-serif relative overflow-x-hidden selection:bg-amber-600 selection:text-white perspective-1500">
+    <div className="min-h-screen bg-gradient-to-br from-[#060911] via-[#16100D] to-[#24130A] text-[#EDE8DF] flex flex-col items-center justify-center p-3 sm:p-6 md:p-8 font-serif relative overflow-x-hidden selection:bg-amber-600 selection:text-white perspective-1500">
       
       {/* Background Audio */}
       <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
 
       {/* Enhanced Glowing Golden Background Particle Field */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute bg-amber-400 rounded-full blur-[1px]"
             style={{
-              width: Math.random() * 6 + 2,
-              height: Math.random() * 6 + 2,
+              width: Math.random() * 5 + 2,
+              height: Math.random() * 5 + 2,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -70, 0],
-              x: [0, Math.random() * 30 - 15, 0],
-              opacity: [0.1, 0.85, 0.1],
-              scale: [1, 1.5, 1],
+              y: [0, -50, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              opacity: [0.1, 0.7, 0.1],
+              scale: [1, 1.3, 1],
             }}
             transition={{
               duration: Math.random() * 5 + 4,
@@ -127,14 +127,14 @@ export default function App() {
       {/* 3D STAGE 2: INVITATION CARD JUMPING UP FROM ENVELOPE */}
       <AnimatePresence>
         {isOpen && (
-          <div className="w-full flex flex-col items-center justify-center z-20 transform-style-3d">
+          <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center z-20 transform-style-3d px-2 sm:px-4">
             
-            {/* 3D Floating Navigation Switcher Tabs */}
+            {/* 3D Floating Navigation Switcher Tabs (Fully Responsive Wrapping) */}
             <motion.div 
-              initial={{ y: -50, opacity: 0, rotateX: -20 }}
+              initial={{ y: -40, opacity: 0, rotateX: -20 }}
               animate={{ y: 0, opacity: 1, rotateX: 0 }}
               transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex bg-[#1B1613]/90 backdrop-blur-2xl p-1.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-amber-500/40 mb-6 print:hidden z-20"
+              className="flex flex-wrap justify-center gap-1 sm:gap-2 bg-[#1B1613]/90 backdrop-blur-2xl p-1.5 rounded-2xl sm:rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-amber-500/40 mb-4 sm:mb-6 print:hidden z-20 w-full sm:w-auto"
             >
               {[
                 { id: 'card', label: 'Invitation', icon: Sparkles },
@@ -146,29 +146,29 @@ export default function App() {
                 return (
                   <motion.button 
                     key={tab.id}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 ${isActive ? 'bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-white shadow-lg border border-amber-400/50' : 'text-amber-200/70 hover:text-white hover:bg-amber-900/40'}`}
+                    className={`flex-1 sm:flex-initial px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${isActive ? 'bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-white shadow-lg border border-amber-400/50' : 'text-amber-200/70 hover:text-white hover:bg-amber-900/40'}`}
                   >
-                    <Icon className="w-3.5 h-3.5" /> {tab.label}
+                    <Icon className="w-3.5 h-3.5 shrink-0" /> <span className="truncate">{tab.label}</span>
                   </motion.button>
                 );
               })}
             </motion.div>
 
-            {/* Main 3D Card Container (Jumping up with dramatic depth and physics) */}
+            {/* Main 3D Card Container (Fully Responsive padding and border radii) */}
             <motion.div 
               initial={{ scale: 0.2, opacity: 0, y: 220, rotateX: 45 }}
               animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="max-w-2xl w-full bg-[#18120E]/95 backdrop-blur-3xl border-2 border-amber-500/50 rounded-3xl shadow-[0_30px_100px_rgba(217,119,6,0.3)] p-6 sm:p-12 relative my-2 text-center overflow-hidden transform-style-3d"
+              className="w-full bg-[#18120E]/95 backdrop-blur-3xl border-2 border-amber-500/50 rounded-2xl sm:rounded-3xl shadow-[0_30px_100px_rgba(217,119,6,0.3)] p-4 sm:p-8 md:p-12 relative my-2 text-center overflow-hidden transform-style-3d"
             >
               
               {/* Radiant Corner Ornaments */}
-              <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-amber-500/30 to-transparent rounded-br-full pointer-events-none"></div>
-              <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-amber-500/30 to-transparent rounded-tl-full pointer-events-none"></div>
+              <div className="absolute top-0 left-0 w-28 sm:w-40 h-28 sm:h-40 bg-gradient-to-br from-amber-500/30 to-transparent rounded-br-full pointer-events-none"></div>
+              <div className="absolute bottom-0 right-0 w-28 sm:w-40 h-28 sm:h-40 bg-gradient-to-tl from-amber-500/30 to-transparent rounded-tl-full pointer-events-none"></div>
 
               <AnimatePresence mode="wait">
                 {activeTab === 'card' && (
@@ -191,13 +191,13 @@ export default function App() {
               </AnimatePresence>
 
               {/* Contact Info Footer */}
-              <div className="border-t border-amber-500/25 pt-6 mt-8 text-xs text-amber-100/50 space-y-2 font-sans">
+              <div className="border-t border-amber-500/25 pt-5 sm:pt-6 mt-6 sm:mt-8 text-xs text-amber-100/50 space-y-2 font-sans">
                 <p className="font-semibold text-amber-200 font-serif">For Inquiries & Assistance:</p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400" /> Ayesha: (0300-1234567)</span>
-                  <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400" /> Bilal: (0321-9876543)</span>
+                <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4">
+                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400" /> Ayesha: (0300-1234567)</span>
+                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-400" /> Bilal: (0321-9876543)</span>
                 </div>
-                <p className="italic pt-2 text-amber-300/80 font-serif text-sm">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them..." (Quran 30:21)</p>
+                <p className="italic pt-2 text-amber-300/80 font-serif text-xs sm:text-sm px-2">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them..." (Quran 30:21)</p>
               </div>
 
             </motion.div>
