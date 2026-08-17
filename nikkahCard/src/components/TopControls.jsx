@@ -4,7 +4,9 @@ import { Printer } from 'lucide-react';
 
 export default function TopControls({ handlePrint, autoPlay }) {
   const videoId = 'Xmlqym0s9X8';
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=${autoPlay ? 1 : 0}&mute=0&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
+  
+  // autoplay=${autoPlay ? 1 : 0} ensures it triggers when open becomes true, skipping the first 5 seconds
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=${autoPlay ? 1 : 0}&start=5&mute=0&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
 
   return (
     <>

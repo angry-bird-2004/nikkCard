@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <div className="min-h-[100dvh] w-full max-w-[100vw] bg-gradient-to-br from-[#060911] via-[#16100D] to-[#24130A] text-[#EDE8DF] flex flex-col items-center justify-between lg:justify-center p-3 sm:p-6 md:p-10 font-serif relative overflow-x-hidden selection:bg-amber-600 selection:text-white perspective-2000 box-border">
-      {isOpen && <TopControls handlePrint={handlePrint} autoPlay={isOpen} />}
+    <TopControls handlePrint={handlePrint} autoPlay={isOpen} />
 
       {/* Responsive Glowing Golden Background Particle Field */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
