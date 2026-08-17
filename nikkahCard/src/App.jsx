@@ -1,16 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Map, Phone } from 'lucide-react';
 
 import Envelope from './components/Envelope';
 import InvitationCard from './components/InvitationCard';
 import VenueModal from './components/VenueModal';
+import TopControls from './components/TopControls';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
-  const [activeTab, setActiveTab] = useState('card'); 
-  const audioRef = useRef(null);
+  const [activeTab, setActiveTab] = useState('card');
+
+  const handlePrint = () => {
+    window.print();
+  };
+  
 
   // Countdown Target Date (Aug 23, 2026, 14:00)
   const targetDate = new Date('2026-08-23T14:00:00').getTime();
@@ -36,8 +41,7 @@ export default function App() {
   const handleOpenEnvelope = () => {
     if (isOpening) return;
     setIsOpening(true);
-    audioRef.current?.play().catch(() => {});
-    
+
     setTimeout(() => {
       setIsOpen(true);
     }, 700);
@@ -45,9 +49,7 @@ export default function App() {
 
   return (
     <div className="min-h-[100dvh] w-full max-w-[100vw] bg-gradient-to-br from-[#060911] via-[#16100D] to-[#24130A] text-[#EDE8DF] flex flex-col items-center justify-between lg:justify-center p-3 sm:p-6 md:p-10 font-serif relative overflow-x-hidden selection:bg-amber-600 selection:text-white perspective-2000 box-border">
-      
-      {/* Background Audio */}
-      <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      {isOpen && <TopControls handlePrint={handlePrint} autoPlay={isOpen} />}
 
       {/* Responsive Glowing Golden Background Particle Field */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
