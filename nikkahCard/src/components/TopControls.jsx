@@ -20,7 +20,7 @@ export default function TopControls({ handlePrint, autoPlay }) {
         />
       </div>
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: -30, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -30, scale: 0.9 }}
@@ -36,7 +36,7 @@ export default function TopControls({ handlePrint, autoPlay }) {
         >
           <Printer className="w-5 h-5 drop-shadow" />
         </motion.button>
-      </motion.div>
+      </motion.div> */}
     </>
   );
 }
